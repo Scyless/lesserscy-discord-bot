@@ -22,7 +22,7 @@ async def help(context):
 	embed.add_field(name="!about", value="Shows useless information.", inline=False)
 	embed.add_field(name="!shiba", value="Posts Shibas. *Cute* Shibas if I do say so myself.", inline=False)
 	embed.add_field(name="!fag", value="Dont talk to him like that.", inline=False)
-	embed.add_field(name="!decide", value="Decides what\'s best for you.", inline=False)
+	embed.add_field(name="!decide", value="""Type "`!decide a | b`" and the bot will choose what's best for you.""", inline=False)
 	embed.add_field(name="!nudes", value="Don't pretend like you didn't know what it would do.", inline=False)
 	embed.add_field(name="!f or !F", value="Press F to pay respects.", inline=False)	
 	embed.add_field(name="!vote", value="Ask something.", inline=False)
@@ -71,15 +71,28 @@ async def fag(context):
 
 
 @scy.command(pass_context=True)
-async def decide(context):
+async def decide(context, *, arg):
 	print(context.message.author, 'Requested !decide')
+		
+	decisions = (context.message.content) # Set loop
+	filtered = re.sub('!decide', '', decisions) # Removes !decide from the decision
+	splitted = filtered.split('|')	# Split the choices into multiple answers
+	generator = random.choice(splitted) # Generates the answer
 	
-	responses = [
-		'You should definitely do that.',
-		'Are you retarded or something?'
-]
-	await scy.say(random.choice(responses))
-
+	msg = [
+	'***{}***sounds like the best choice.'.format(generator),
+	'***{}***is the only sane option.'.format(generator),
+	'***{}***is what a retard would pick. And you\'re retarded.'.format(generator),
+	
+	'Are you a retard? Of course you are. Pick ***{}***'.format(generator),
+	'Pick your poison. Nevermind, I already did it for you. Choose ***{}***'.format(generator),
+	'The Loser Squad demands you to take ***{}***'.format(generator)
+	]
+		
+	await scy.say(random.choice(msg))
+	
+# Send a random choice
+	
 
 @scy.command(pass_context=True)
 async def nudes(context):
@@ -174,8 +187,7 @@ Lachsfisch himself just like a balloon
 This crazy Boi just digs his tunes!
 Huh!
 	`''')
-
-	b = get(scy.get_all_emojis(), name='b')
+	
 	await scy.say(song + '\n \n`Credit: Adversary aka bu`:b::b:`er`')
 
 
@@ -194,6 +206,14 @@ Oh wait, I bet you thought "I'm gonna do something really random and mention a b
 
 	await scy.process_commands(message)
 	return
+	
+	
+@scy.command(pass_context=True)
+async def test():
+
+	await scy.say(random.choice('1', '2'))
+	
+	
 	
 	
 @scy.event
