@@ -19,7 +19,7 @@ async def help(context):
 	embed = discord.Embed(title="Welcome to the help. Here we help each other.", description="This bot has the following commands, as of right now:", color=0xff0000)
 
 	embed.add_field(name="!help", value="You're looking at it right now.", inline=False)
-	embed.add_field(name="!info", value="Shows useless information.", inline=False)
+	embed.add_field(name="!about", value="Shows useless information.", inline=False)
 	embed.add_field(name="!shiba", value="Posts Shibas. *Cute* Shibas if I do say so myself.", inline=False)
 	embed.add_field(name="!fag", value="Dont talk to him like that.", inline=False)
 	embed.add_field(name="!decide", value="Decides what\'s best for you.", inline=False)
@@ -32,8 +32,8 @@ async def help(context):
 
 
 @scy.command(pass_context=True)
-async def info(context):
-	print(context.message.author, 'Requested !info')
+async def about(context):
+	print(context.message.author, 'Requested !about')
 	
 	embed = discord.Embed(title="What's the name of the loser that made this terrible bot?", description="Scyless#7469", color=0xff0000)
 	
