@@ -89,9 +89,7 @@ async def decide(context, *, arg):
 	'The Loser Squad demands you to take ***{}***'.format(generator)
 	]
 		
-	await scy.say(random.choice(msg))
-	
-# Send a random choice
+	await scy.say(random.choice(msg))	# Send a random choice
 	
 
 @scy.command(pass_context=True)
@@ -206,16 +204,8 @@ Oh wait, I bet you thought "I'm gonna do something really random and mention a b
 
 	await scy.process_commands(message)
 	return
-	
-	
-@scy.command(pass_context=True)
-async def test():
 
-	await scy.say(random.choice('1', '2'))
-	
-	
-	
-	
+
 @scy.event
 async def on_ready():
 	game = [
