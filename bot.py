@@ -60,13 +60,14 @@ async def fag(context):
 	print(context.message.author, 'Requested !fag')
 	
 	responses = [
-		'no u',
+		'no u,',
 		'More like',
 		'The only faggot in this server is',
-		'The biggest faggot is Nico. There may be multiple, but no exceptions.'
+		'The biggest faggot is Nico. There may be multiple, but no exceptions. You\'re 2nd place,'
 
 ]
-	await scy.say(random.choice(responses) + " " + context.message.author.mention)
+
+	await scy.say(random.choice(responses) + " {}".format(context.message.author.name))
 
 
 @scy.command(pass_context=True)
@@ -102,7 +103,7 @@ async def nudes(context):
 	pass_context=True)
 async def f(context):
 	print(context.message.author, 'Requested !f')
-	await scy.say(context.message.author.mention + ' ' + 'Paid his respects. And so should you.')
+	await scy.say(context.message.author.name + ' ' + 'Paid his respects. And so should you.')
 
 
 @scy.command(pass_context=True)
@@ -180,23 +181,21 @@ Huh!
 
 @scy.event
 async def on_message(message):
-	
-	if '<@462412143464284160>' in message.content:
-		await scy.send_message(message.channel, '''Why the fuck would you mention a bot? Are you retarded or something?\n
-Oh wait, I bet you thought "I'm gonna do something really random and mention a bot! How funny is that?". Well, let me tell you something. You're not funny. You're nothing. You're trash.''')
-
-	await scy.process_commands(message)
-
-
-@scy.event
-async def on_message(message):
 	game = [
 	'with ur mom lol',
 	'say !help if you need help'
 	]
 	await scy.change_presence(game=Game(name=random.choice(game)))
-	await scy.process_commands(message)
+	
+	if '<@462412143464284160>' in message.content:
+		print('Someone mentioned the bot.')
+		await scy.send_message(message.channel, '''Why the fuck would you mention a bot? Are you retarded or something?\n
+Oh wait, I bet you thought "I'm gonna do something really random and mention a bot! How funny is that?". Well, let me tell you something. You're not funny. You're nothing. You're trash.''')
 
+	await scy.process_commands(message)
+	return
+	
+	
 @scy.event
 async def on_ready():
 	game = [
