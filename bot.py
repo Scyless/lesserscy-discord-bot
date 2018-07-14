@@ -247,7 +247,6 @@ async def quote(context, *, arg):
         await scy.say('*{}*'.format(quote))
     else:
         await scy.say('''I think you meant something like `!quote add`, or `!quote show`. But you can't even type.\n***Pathetic***. ''')
-    break
     
     
 @scy.event
